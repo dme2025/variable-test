@@ -7,3 +7,5 @@ jobs:
     steps:
       - name: List all default EVs
         run: printenv
+      - name: access event  name
+        run: $GITHUB_EVENT_NAME
