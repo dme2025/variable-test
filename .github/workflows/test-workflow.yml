@@ -1,0 +1,9 @@
+name: GitHub Actions Demo
+run-name:  GitHub Actions EV demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions-EV:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List all default EVs
+        run: printenv
