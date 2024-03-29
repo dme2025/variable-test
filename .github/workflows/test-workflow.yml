@@ -1,13 +1,24 @@
-name: GitHub Actions Demo
-run-name:  GitHub Actions EV demo
+name: GitHub Actions customs variables  demo
+run-name:  GitHub Actions customs variables
 on: [push]
+env:
+  DB_HOST: "mypostgres.com"
+  DB_USERNAME: "postgres"
 jobs:
-  Explore-GitHub-Actions-EV:
+  job-01:
+    env:
+      IMAGE_NAME: "wheather-app"
+      IAMGE_TAG: "2.0"
     runs-on: ubuntu-latest
     steps:
-      - name: List all default EVs
-        run: printenv
-      - name: access event  name
-        run:
-          echo "The event that trigger this workflow ${{ github.event_name }}"
-          echo "Name of the branch ${{ github.ref_name }}"
+      - name: Print image name
+        run: echo $IMAGE_NAME
+      - name: Print db hostname
+        run: echo $DB_HOST   
+  job-02:
+     runs-on: ubuntu-latest
+    steps:
+      - name: print db hostname
+        run: echo ${{env.DB_HOST}}
+        env:
+         DB_HOST: "localhost"
