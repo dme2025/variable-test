@@ -2,23 +2,14 @@ name: GitHub Actions customs variables  demo
 run-name:  GitHub Actions customs variables
 on: [push]
 env:
-  DB_HOST: "mypostgres.com"
-  DB_USERNAME: "postgres"
+  API_KEY: "123456_set_at_workflow_level"
 jobs:
-  job-01:
-    env:
-      IMAGE_NAME: "wheather-app"
-      IAMGE_TAG: "2.0"
+  Run-python-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Print image name
-        run: echo $IMAGE_NAME
-      - name: Print db hostname
-        run: echo $DB_HOST   
-  job-02:
-     runs-on: ubuntu-latest
-     steps:
-      - name: print db hostname
-        run: echo ${{env.DB_HOST}}
-        env:
-         DB_HOST: "localhost"
+    - name: check out repository code
+      uses: actions/checkout@v4
+    - name: get python version
+      run: python --version
+    - name: Run script
+      run: python test.py
