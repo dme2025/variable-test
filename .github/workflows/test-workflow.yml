@@ -2,13 +2,15 @@ name: GitHub Actions customs variables  demo
 run-name:  GitHub Actions customs variables
 on: [push]
 env:
-  API_KEY: ${{ vars.API_KEY}}
+  API_KEY: ${{ secrets.API_KEY}}
 jobs:
   Run-python-script:
     runs-on: ubuntu-latest
     steps:
     - name: check out repository code
       uses: actions/checkout@v4
+    - name: read secret
+      run: echo ${{ env.API_KEY }}
     - name: get python version
       run: python --version
     - name: Run script
