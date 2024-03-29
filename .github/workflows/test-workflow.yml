@@ -2,7 +2,7 @@ name: GitHub Actions customs variables  demo
 run-name:  GitHub Actions customs variables
 on: [push]
 env:
-  API_KEY: "123456_set_at_workflow_level"
+  API_KEY: ${{ vars.API_KEY}}
 jobs:
   Run-python-script:
     runs-on: ubuntu-latest
