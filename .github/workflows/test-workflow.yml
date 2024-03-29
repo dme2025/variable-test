@@ -17,7 +17,7 @@ jobs:
         run: echo $DB_HOST   
   job-02:
      runs-on: ubuntu-latest
-    steps:
+     steps:
       - name: print db hostname
         run: echo ${{env.DB_HOST}}
         env:
